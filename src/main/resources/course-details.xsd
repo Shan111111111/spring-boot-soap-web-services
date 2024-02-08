@@ -23,6 +23,7 @@
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
+
 	<xs:complexType name="CourseDetails">
 		<xs:sequence>
 			<xs:element name="id" type="xs:int" />
@@ -40,6 +41,19 @@
 		 </CourseDetails>
 	</GetCourseDetailsResponse>
 	-->
+	<xs:element name="GetAllCourseDetailsRequest">
+		<xs:complexType>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="GetAllCourseDetailsResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="CourseDetails" type="tns:CourseDetails" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
 
 </xs:schema>
 
