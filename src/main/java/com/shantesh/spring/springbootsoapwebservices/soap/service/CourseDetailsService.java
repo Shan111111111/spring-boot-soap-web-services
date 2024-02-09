@@ -1,14 +1,19 @@
 package com.shantesh.spring.springbootsoapwebservices.soap.service;
 
+
 import com.shantesh.spring.springbootsoapwebservices.soap.bean.Course;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 @Component
 public class CourseDetailsService {
 
+    public enum Status {
+        SUCCESS, FAILURE
+    }
 
     private  static List<Course> courses = new ArrayList<>();
 
@@ -33,4 +38,17 @@ public class CourseDetailsService {
         return  courses;
     }
 
+
+    public Status delete(int id) {
+        Iterator<Course> iterator = courses.iterator();
+        while (iterator.hasNext()) {
+            Course course = iterator.next();
+            if (course.getId() == id) {
+                iterator.remove();
+                return Status.SUCCESS;
+            }
+        }
+        return Status.FAILURE;
+
+    }
 }
